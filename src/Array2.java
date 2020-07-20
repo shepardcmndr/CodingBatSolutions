@@ -4,10 +4,46 @@ Date: 13.07.2020
 Comments:
 */
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Array2 {
     public static void main(String[] args) {
+    }
+
+    public String[] fizzBuzz(int start, int end) {
+        String[] result = new String[end - start];
+
+        for (int i = start; i < end; i++) {
+            int pointer = i - start;
+            if (i % 3 == 0) {
+                result[pointer] = "Fizz";
+                if (i % 5 == 0) {
+                    result[pointer] += "Buzz";
+                }
+            } else if (i % 5 == 0) {
+                result[pointer] = "Buzz";
+            } else {
+                result[pointer] = String.valueOf(i);
+            }
+        }
+
+        return result;
+    }
+
+    public int[] evenOdd(int[] nums) {
+        List<Integer> sorted = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] % 2 == 0) {
+                sorted.add(0, nums[i]);
+            } else {
+                sorted.add(nums[i]);
+            }
+        }
+
+        return sorted.stream().mapToInt(i -> i).toArray();
     }
 
     public int[] zeroMax(int[] nums) {
