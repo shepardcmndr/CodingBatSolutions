@@ -11,6 +11,68 @@ public class Array3 {
     public static void main(String[] args) {
     }
 
+    public int countClumps(int[] nums) {
+        int counter = 0;
+        for (int i = 0; i < nums.length - 1;) {
+            int temp;
+            if (nums[i] == nums[i + 1]) {
+                temp = nums[i];
+                do {
+                    i++;
+                } while (i < nums.length && temp == nums[i]);
+                counter++;
+            } else {
+                i++;
+            }
+        }
+        return counter;
+    }
+
+    public int maxMirror(int[] nums) {
+        int len = nums.length;
+        if (len == 0)
+            return 0;
+        int maxCount = 1;
+        boolean flag = false;
+
+        for (int i = 0; i < len; i++)
+        {
+            int tempCount = 1;
+            int count = i;
+
+            for (int j = len - 1; j >= 0 && (count < len); j--)
+            {
+                if (nums[count] == nums[j] && !flag)
+                {
+                    flag = true;
+                    count++;
+                    continue;
+                }
+                if (nums[count] == nums[j] && flag)
+                {
+                    tempCount++;
+                    count++;
+                    maxCount = Math.max(tempCount, maxCount);
+                    continue;
+                }
+                if (nums[i] != nums[j] && flag)
+                {
+                    flag = false;
+                    count = i;
+                    tempCount = 1;
+                    continue;
+                }
+                if (j == count || (j-count) == 1)
+                {
+                    flag = false;
+                    break;
+                }
+
+            }
+        }
+        return maxCount;
+    }
+
     public int[] seriesUp(int n) {
         int[] result = new int[n * (n  + 1) / 2];
         int index = 0;
