@@ -9,10 +9,10 @@ import java.util.List;
 
 public class AP1 {
     public static void main(String[] args) {
-        commonTwo(new String[] {"a", "a", "b", "b", "c"}, new String[] {"a", "b", "b", "b", "c"});
+
     }
 
-    public static int commonTwo(String[] a, String[] b) {
+    public int commonTwo(String[] a, String[] b) {
         int counter = 0;
         String d = "";
         String t;
